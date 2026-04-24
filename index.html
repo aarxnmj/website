@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Little Leapers Childcare Centre | Bella Vista NSW</title>
+    <meta
+      name="description"
+      content="Premium childcare landing page demo for Little Leapers Childcare Centre in Bella Vista NSW."
+    />
+    <style>
+      :root {
+        --cream: #fff6ec;
+        --cream-strong: #ffefd8;
+        --orange: #ffb36b;
+        --orange-deep: #f79d48;
+        --blue: #8ecfff;
+        --mint: #a8e6cf;
+        --text: #2d3440;
+        --text-soft: #5c6573;
+        --card: rgba(255, 255, 255, 0.75);
+        --shadow: 0 10px 30px rgba(67, 84, 102, 0.15);
+        --radius: 20px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, var(--cream) 0%, #ffffff 65%);
+        scroll-behavior: smooth;
+      }
+
+      .container {
+        width: min(1120px, 92vw);
+        margin: 0 auto;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 2.5rem 0 5rem;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(255, 179, 107, 0.35), transparent 40%),
+          radial-gradient(circle at 80% 30%, rgba(142, 207, 255, 0.35), transparent 45%),
+          radial-gradient(circle at 65% 80%, rgba(168, 230, 207, 0.35), transparent 45%);
+        z-index: 0;
+      }
+
+      .nav {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(980px, 92vw);
+        z-index: 30;
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+
+      .brand span {
+        color: var(--orange-deep);
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: var(--text-soft);
+        font-weight: 600;
+        margin-left: 1rem;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: min(760px, 100%);
+        animation: riseFade 1.2s ease-out both;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 179, 107, 0.45);
+        border-radius: 999px;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.88rem;
+        color: var(--text-soft);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 6vw, 4.2rem);
+        line-height: 1.08;
+        margin: 1rem 0;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        font-size: clamp(1rem, 2.2vw, 1.25rem);
+        color: var(--text-soft);
+        max-width: 640px;
+      }
+
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 12px;
+        padding: 0.85rem 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(247, 157, 72, 0.3);
+      }
+
+      .btn-secondary {
+        background: #fff;
+        color: var(--text);
+        border: 1px solid rgba(45, 52, 64, 0.12);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 24px rgba(45, 52, 64, 0.16);
+      }
+
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.65;
+        z-index: 0;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .shape-1 {
+        width: 170px;
+        height: 170px;
+        background: var(--blue);
+        top: 20%;
+        right: 5%;
+      }
+
+      .shape-2 {
+        width: 95px;
+        height: 95px;
+        background: var(--mint);
+        top: 58%;
+        right: 30%;
+        animation-delay: 1.8s;
+      }
+
+      .shape-3 {
+        width: 130px;
+        height: 130px;
+        background: var(--orange);
+        top: 70%;
+        left: 4%;
+        animation-delay: 3s;
+      }
+
+      section {
+        padding: 4.5rem 0;
+      }
+
+      .section-title {
+        font-size: clamp(1.55rem, 3vw, 2.3rem);
+        margin: 0 0 1.5rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .badges {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        padding: 1.35rem;
+        border-radius: var(--radius);
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card h3 {
+        margin: 0.4rem 0 0.55rem;
+      }
+
+      .icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: #fff;
+        font-size: 1.2rem;
+      }
+
+      .programs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .about-wrap {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 1rem;
+      }
+
+      .testimonials {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.8rem;
+      }
+
+      .gallery-item {
+        min-height: 150px;
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+
+      .gallery-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(45, 52, 64, 0.2));
+      }
+
+      .gallery-item:nth-child(1) { background: linear-gradient(145deg, #8ecfff, #9de4ff); }
+      .gallery-item:nth-child(2) { background: linear-gradient(145deg, #ffd8b0, #ffbd7d); }
+      .gallery-item:nth-child(3) { background: linear-gradient(145deg, #b8f0dc, #93e0be); }
+      .gallery-item:nth-child(4) { background: linear-gradient(145deg, #f7ddff, #d4d8ff); }
+      .gallery-item:nth-child(5) { background: linear-gradient(145deg, #ffcf95, #ffac67); }
+      .gallery-item:nth-child(6) { background: linear-gradient(145deg, #9de0ff, #80c9ff); }
+      .gallery-item:nth-child(7) { background: linear-gradient(145deg, #b7f0cb, #8ee6b0); }
+      .gallery-item:nth-child(8) { background: linear-gradient(145deg, #ffe0c1, #ffc78f); }
+
+      .gallery-item:nth-child(3),
+      .gallery-item:nth-child(6) {
+        min-height: 220px;
+      }
+
+      .location {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 1rem;
+      }
+
+      .cta {
+        text-align: center;
+        background: linear-gradient(145deg, var(--cream-strong), #fff);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .parallax {
+        will-change: transform;
+      }
+
+      footer {
+        padding: 2rem 0 2.8rem;
+        text-align: center;
+        color: var(--text-soft);
+      }
+
+      @keyframes riseFade {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+
+      @media (max-width: 920px) {
+        .badges,
+        .programs,
+        .testimonials {
+          grid-template-columns: 1fr;
+        }
+
+        .about-wrap,
+        .location {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .nav .links {
+          display: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        section {
+          padding: 3.5rem 0;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
+
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="brand">Little <span>Leapers</span></div>
+      <div class="links">
+        <a href="#programs">Programs</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#visit">Visit</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <span class="shape shape-1 parallax" data-speed="0.05"></span>
+      <span class="shape shape-2 parallax" data-speed="0.09"></span>
+      <span class="shape shape-3 parallax" data-speed="0.04"></span>
+
+      <div class="container hero-content">
+        <span class="eyebrow">⭐ Premium Early Learning in Bella Vista NSW</span>
+        <h1>Where little minds leap, learn and grow</h1>
+        <p>
+          A warm, trusted childcare centre where every child is supported by caring educators,
+          engaging environments, and play-based programs designed for confident starts.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#visit">Book a Tour</a>
+          <a class="btn btn-secondary" href="tel:+61290000000">Call Now</a>
+          <a
+            class="btn btn-secondary"
+            href="https://www.google.com/maps/search/?api=1&query=Bella+Vista+NSW"
+            target="_blank"
+            rel="noopener"
+            >Open Google Maps</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container reveal">
+        <h2 class="section-title">Trusted by local families</h2>
+        <div class="grid badges">
+          <article class="card">
+            <div class="icon">🛡️</div>
+            <h3>Safe Environment</h3>
+            <p>Secure facilities, strict hygiene standards, and thoughtful supervision every day.</p>
+          </article>
+          <article class="card">
+            <div class="icon">💛</div>
+            <h3>Caring Educators</h3>
+            <p>Qualified, nurturing educators who partner closely with families and each child.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🧩</div>
+            <h3>Play-Based Learning</h3>
+            <p>Purposeful play experiences that inspire curiosity, social confidence, and growth.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="programs" class="container reveal">
+        <h2 class="section-title">Programs for every early stage</h2>
+        <div class="grid programs">
+          <article class="card">
+            <h3>Nursery Care</h3>
+            <p>Gentle routines, secure attachment, and sensory-rich care for infants.</p>
+          </article>
+          <article class="card">
+            <h3>Toddler Learning</h3>
+            <p>Language, movement, and social exploration in a joyful daily rhythm.</p>
+          </article>
+          <article class="card">
+            <h3>Preschool Readiness</h3>
+            <p>School-readiness foundations through literacy, numeracy, and problem-solving play.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="container reveal">
+        <h2 class="section-title">About Little Leapers</h2>
+        <div class="about-wrap">
+          <article class="card">
+            <p>
+              Little Leapers Childcare Centre brings together premium facilities and a family-first
+              philosophy. We create spaces where children feel safe, seen, and inspired to explore.
+            </p>
+            <p>
+              From our carefully planned rooms to our strong educator-to-child relationships, every
+              detail is designed to support meaningful early development.
+            </p>
+          </article>
+          <article class="card">
+            <h3>What parents love</h3>
+            <ul>
+              <li>Daily updates and transparent communication</li>
+              <li>Fresh, age-appropriate meals and routines</li>
+              <li>Calm transitions and personalised learning plans</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="testimonials" class="container reveal">
+        <h2 class="section-title">Parent testimonials</h2>
+        <div class="grid testimonials">
+          <article class="card">
+            “Our daughter settled in so quickly. The educators are warm, patient, and genuinely
+            attentive.”
+            <p><strong>— Amelia R.</strong></p>
+          </article>
+          <article class="card">
+            “You can feel the quality as soon as you walk in. The program is playful but structured
+            beautifully.”
+            <p><strong>— Noah & Priya K.</strong></p>
+          </article>
+          <article class="card">
+            “We love the communication and care. It feels like a true partnership with our family.”
+            <p><strong>— Marcus T.</strong></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container reveal">
+        <h2 class="section-title">A glimpse of the centre</h2>
+        <div class="gallery">
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+          <div class="gallery-item"></div>
+        </div>
+      </section>
+
+      <section id="visit" class="container reveal">
+        <h2 class="section-title">Visit us in Bella Vista, NSW</h2>
+        <div class="location">
+          <article class="card">
+            <h3>Little Leapers Childcare Centre</h3>
+            <p>Bella Vista, New South Wales</p>
+            <p>Conveniently located for Hills District families with easy weekday access.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#">Book a Tour</a>
+              <a class="btn btn-secondary" href="tel:+61290000000">Call Now</a>
+            </div>
+          </article>
+          <article class="cta">
+            <h3>Ready to explore Little Leapers?</h3>
+            <p>Enquire today and discover a premium early learning experience.</p>
+            <a
+              class="btn btn-primary"
+              href="https://www.google.com/maps/search/?api=1&query=Bella+Vista+NSW"
+              target="_blank"
+              rel="noopener"
+              >Open Google Maps</a
+            >
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Little Leapers Childcare Centre · Bella Vista NSW
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      const parallaxElements = document.querySelectorAll(".parallax");
+
+      window.addEventListener("scroll", () => {
+        const y = window.scrollY;
+        parallaxElements.forEach((el) => {
+          const speed = parseFloat(el.dataset.speed || "0.05");
+          el.style.transform = `translateY(${y * speed}px)`;
+        });
+      });
+    </script>
+  </body>
+</html>
